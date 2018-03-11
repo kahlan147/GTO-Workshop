@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Resource : MonoBehaviour {
 
+    public string resourceName;
     public delegate void ChangedValues();
     public static event ChangedValues ResourceChanged;
 
@@ -19,18 +20,23 @@ public class Resource : MonoBehaviour {
         ResourceChanged();
 	}
 
-    public void AddWood()
+    public void Add()
     {
         CurrentAmount += 1;
         ResourceChanged();
     }
 
-    public void RemoveWood()
+    public void Remove()
     {
         CurrentAmount -= 1;
         ResourceChanged();
     }
 
+    public void pay(int amount)
+    {
+        CurrentAmount -= amount;
+        ResourceChanged();
+    }
 
 
 }
