@@ -20,7 +20,7 @@ public class Factory : MonoBehaviour {
     [System.Serializable]
     public struct RequiredMaterial
     {
-        public Resource resource;
+        public ResourceModel resource;
         public int cost;
     }
 

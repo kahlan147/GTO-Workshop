@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Resource : MonoBehaviour {
+public class ResourceModel : MonoBehaviour {
 
     public string resourceName;
     public delegate void ChangedValues();

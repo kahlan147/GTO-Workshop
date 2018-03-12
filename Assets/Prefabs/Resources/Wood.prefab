@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe2eb117d5ce0944b63192a7cf058ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodText: {fileID: 114136942690639562}
+  resourceText: {fileID: 114136942690639562}
   resource: {fileID: 114358608375847928}
 --- !u!114 &114136942690639562
 MonoBehaviour:
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceName: Wood
-  StartingAmount: 20
+  StartingAmount: 18
   CurrentAmount: 0
 --- !u!114 &114747418306788556
 MonoBehaviour:
@@ -207,7 +207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -267.4, y: 118}
+  m_AnchoredPosition: {x: -300.9, y: 118}
   m_SizeDelta: {x: 0, y: -62.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224148333352712322
