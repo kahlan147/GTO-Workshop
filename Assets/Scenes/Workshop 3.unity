@@ -585,6 +585,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 051a0e0b414a5ac4dae2cdd7ab4bcb40, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &576815929 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114358608375847928, guid: 051a0e0b414a5ac4dae2cdd7ab4bcb40,
+    type: 2}
+  m_PrefabInternal: {fileID: 576815928}
+  m_Script: {fileID: 11500000, guid: ea744c1195a69ff4fb54b3cf2ca8a9a5, type: 3}
 --- !u!224 &728584167 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224530763022915822, guid: 5a064405bac0ee6428cdd74088aec499,
@@ -597,6 +603,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: myResources.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4417505354971732, guid: 1e13cff2dcd551d4a840f99b63826337, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -654,6 +665,16 @@ Prefab:
       propertyPath: RequiredMaterials.Array.data[0].resource
       value: 
       objectReference: {fileID: 1665001130}
+    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: myResources.Array.data[0]
+      value: 
+      objectReference: {fileID: 1665001130}
+    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: myResources.Array.data[1]
+      value: 
+      objectReference: {fileID: 576815929}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e13cff2dcd551d4a840f99b63826337, type: 2}
   m_IsPrefabParent: 0
