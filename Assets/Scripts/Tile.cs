@@ -20,7 +20,16 @@ public class Tile : MonoBehaviour {
 
     public void SetUnit(Unit unit)
     {
-        this.unit = unit;
-        unit.transform.position = new Vector3(this.transform.position.x, 1, transform.position.z);
+            this.unit = unit;
+            unit.transform.position = new Vector3(this.transform.position.x, 1, this.transform.position.z);
+    }
+
+    public bool CanPlaceUnit()
+    {
+        if (this.unit == null)
+        {
+            return true;
+        }
+        return false;
     }
 }

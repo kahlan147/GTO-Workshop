@@ -14,7 +14,7 @@ public class Cursor : MonoBehaviour {
     private float timer_for_double_click;
 
     //this is how long in seconds to allow for a double click
-    float delay = .25f;
+    float DoubleClickDelay = .25f;
 
     // Use this for initialization
     void Start() {
@@ -82,7 +82,7 @@ public class Cursor : MonoBehaviour {
         if (one_click)
         {
             // if the time now is delay seconds more than when the first click started. 
-            if ((Time.time - timer_for_double_click) > delay)
+            if ((Time.time - timer_for_double_click) > DoubleClickDelay)
          {
 
                 //basically if thats true its been too long and we want to reset so the next click is simply a single click and not a double click.
@@ -95,7 +95,17 @@ public class Cursor : MonoBehaviour {
 
     private void PlaceUnit()
     {
-        Vector3 coordinates = this.transform.position;
-        unitPlacer.PlaceUnit(coordinates);
+        RaycastHit hit;
+        Tile tile = null;
+        
+        if (Physics.Raycast(transform.position, -Vector3.up*3, out hit))
+        {
+            tile = hit.collider.gameObject.transform.parent.GetComponent<Tile>();
+        }
+        if (tile != null)
+        {
+            Vector3 coordinates = this.transform.position;
+            unitPlacer.PlaceUnit(tile);
+        }
     }
 }

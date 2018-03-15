@@ -23,7 +23,7 @@ public class Grid : MonoBehaviour {
 
     private void CreateGrid()
     {
-        int gridDistance = 10;
+        int gridDistance = 3;
         for (int x = 0; x < GridSize; x++)
         {
             for (int y = 0; y < GridSize; y++)

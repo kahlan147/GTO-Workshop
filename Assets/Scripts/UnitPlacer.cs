@@ -35,11 +35,11 @@ public class UnitPlacer : MonoBehaviour {
         cost.text = "Cost: " + factory.RequiredMaterials[0].resource.resourceName + " " + factory.RequiredMaterials[0].cost;
     }
 
-    public void PlaceUnit(Vector3 coordinates)
+    public void PlaceUnit(Tile tile)
     {
         if (chosenFactory != null)
         {
-            chosenFactory.PlaceUnit(coordinates);
+            chosenFactory.PlaceUnit(tile);
         }
         else
         {
