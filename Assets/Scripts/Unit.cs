@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
 
+    public Material test;
     public string unitName;
 
 	// Use this for initialization
@@ -15,5 +16,10 @@ public class Unit : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void SetColor(Material myNewColor)
+    {
+        this.GetComponentInChildren<Renderer>().material = myNewColor;
+    }
     
 }

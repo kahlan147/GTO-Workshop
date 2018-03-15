@@ -11,6 +11,8 @@ public class UnitPlacer : MonoBehaviour {
     public Text unitName;
     public Text cost;
 
+    public List<Factory> factories;
+
     private Coroutine currentTimer = null;
 
 	// Use this for initialization
@@ -23,23 +25,31 @@ public class UnitPlacer : MonoBehaviour {
 		
 	}
 
-    public void ChooseFactory(Factory factory)
+    public void ChooseFactory(string unitname)
     {
-        this.chosenFactory = factory;
+        Debug.Log("1 " + unitname);
+        foreach (Factory factory in factories)
+        {
+            Debug.Log(factory.unit.unitName);
+            if (factory.unit.unitName == unitname)
+            {
+                this.chosenFactory = factory;
+            }
+        }
         if (currentTimer != null)
         {
             StopCoroutine(currentTimer);
         }
         currentTimer = StartCoroutine(ShowCostScreenTimer());
-        unitName.text = factory.unit.unitName;
-        cost.text = "Cost: " + factory.RequiredMaterials[0].resource.resourceName + " " + factory.RequiredMaterials[0].cost;
+        unitName.text = chosenFactory.unit.unitName;
+        cost.text = "Cost: " + chosenFactory.RequiredMaterials[0].resource.resourceName + " " + chosenFactory.RequiredMaterials[0].cost;
     }
 
-    public void PlaceUnit(Tile tile)
+    public void PlaceUnit(Tile tile, Material material)
     {
         if (chosenFactory != null)
         {
-            chosenFactory.PlaceUnit(tile);
+            chosenFactory.PlaceUnit(tile, material);
         }
         else
         {

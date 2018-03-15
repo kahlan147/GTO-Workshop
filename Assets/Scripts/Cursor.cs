@@ -5,8 +5,10 @@ using UnityEngine;
 public class Cursor : MonoBehaviour {
 
     public Camera camera;
-    public UnitPlacer unitPlacer;
+    public TurnManager turnManager;
 
+    private Player currentPlayer;
+    private UnitPlacer unitPlacer;
     private Vector3 LastMovementVector = new Vector3(1000, 1000, 1000);
 
     private bool one_click = false;
@@ -21,10 +23,20 @@ public class Cursor : MonoBehaviour {
         
     }
 
+    private void OnEnable()
+    {
+        TurnManager.nextPlayerTurn += NextPlayerTurn;
+    }
+
     // Update is called once per frame
     void Update() {
         Drag();
         DoubleClick();
+    }
+
+    private void NextPlayerTurn() {
+        currentPlayer = turnManager.GetPlayer();
+        unitPlacer = currentPlayer.GetComponentInChildren<UnitPlacer>();
     }
 
     private void Drag()
@@ -105,7 +117,13 @@ public class Cursor : MonoBehaviour {
         if (tile != null)
         {
             Vector3 coordinates = this.transform.position;
-            unitPlacer.PlaceUnit(tile);
+            unitPlacer.PlaceUnit(tile, currentPlayer.MyColor);
         }
     }
+
+    public void ChooseFactory(string unitName)
+    {
+        unitPlacer.ChooseFactory(unitName);
+    }
+    
 }

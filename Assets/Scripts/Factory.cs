@@ -24,7 +24,7 @@ public class Factory : MonoBehaviour {
         public int cost;
     }
 
-    public void PlaceUnit(Tile tile)
+    public void PlaceUnit(Tile tile, Material unitColour)
     {
         bool canPay = true;
         foreach(RequiredMaterial material in RequiredMaterials) {
@@ -36,16 +36,16 @@ public class Factory : MonoBehaviour {
         }
         if (canPay)
         {
-            
             if (tile.CanPlaceUnit())
             {
                 foreach (RequiredMaterial material in RequiredMaterials)
                 {
                     material.resource.pay(material.cost);
                 }
-                tile.SetUnit(Instantiate(unit, this.transform.position, this.transform.rotation));
+                Unit newUnit = Instantiate(unit, this.transform.position, this.transform.rotation);
+                newUnit.SetColor(unitColour);
+                tile.SetUnit(newUnit);
             }
-
         }
         else
         {

@@ -11,27 +11,32 @@ public class TurnManager : MonoBehaviour {
     public UnitPlacer unitPlacer;
 
     private Player currentPlayer;
-    private int playerNumber = 0;
+    private int playerNumber = -1;
 
 	// Use this for initialization
 	void Start () {
-        this.currentPlayer = Players[playerNumber];
+        NextTurn();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
     public void NextTurn()
     {
         playerNumber++;
-        if (playerNumber > Players.Capacity)
+        if (playerNumber >= Players.Capacity)
         {
             playerNumber = 0;
         }
         currentPlayer = Players[playerNumber];
         nextPlayerTurn();
+    }
+
+    public Player GetPlayer()
+    {
+        return currentPlayer;
     }
 
 

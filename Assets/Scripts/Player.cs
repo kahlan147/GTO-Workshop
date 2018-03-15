@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public Material MyColor;
+    public List<ResourceModel> myResources;
 
 	// Use this for initialization
 	void Start () {
