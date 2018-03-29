@@ -171,6 +171,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyColor: {fileID: 2100000, guid: 7c10833d0cd2fbc4384bf49d0305e525, type: 2}
+  myResources:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114196615767598504
 MonoBehaviour:
   m_ObjectHideFlags: 1

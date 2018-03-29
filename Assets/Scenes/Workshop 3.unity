@@ -603,11 +603,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
-        type: 2}
-      propertyPath: myResources.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4417505354971732, guid: 1e13cff2dcd551d4a840f99b63826337, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -640,11 +635,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114927650661453204, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: RequiredMaterials.Array.data[0].resource
+      value: 
+      objectReference: {fileID: 1665001130}
     - target: {fileID: 114285469700704876, guid: 1e13cff2dcd551d4a840f99b63826337,
         type: 2}
       propertyPath: RequiredMaterials.Array.data[0].resource
       value: 
       objectReference: {fileID: 1665001130}
+    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: myResources.Array.data[0]
+      value: 
+      objectReference: {fileID: 1665001130}
+    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
+        type: 2}
+      propertyPath: myResources.Array.data[1]
+      value: 
+      objectReference: {fileID: 576815929}
     - target: {fileID: 114196615767598504, guid: 1e13cff2dcd551d4a840f99b63826337,
         type: 2}
       propertyPath: image
@@ -660,21 +670,6 @@ Prefab:
       propertyPath: cost
       value: 
       objectReference: {fileID: 1015865408}
-    - target: {fileID: 114927650661453204, guid: 1e13cff2dcd551d4a840f99b63826337,
-        type: 2}
-      propertyPath: RequiredMaterials.Array.data[0].resource
-      value: 
-      objectReference: {fileID: 1665001130}
-    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
-        type: 2}
-      propertyPath: myResources.Array.data[0]
-      value: 
-      objectReference: {fileID: 1665001130}
-    - target: {fileID: 114185578014191788, guid: 1e13cff2dcd551d4a840f99b63826337,
-        type: 2}
-      propertyPath: myResources.Array.data[1]
-      value: 
-      objectReference: {fileID: 576815929}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e13cff2dcd551d4a840f99b63826337, type: 2}
   m_IsPrefabParent: 0

@@ -27,10 +27,8 @@ public class UnitPlacer : MonoBehaviour {
 
     public void ChooseFactory(string unitname)
     {
-        Debug.Log("1 " + unitname);
         foreach (Factory factory in factories)
         {
-            Debug.Log(factory.unit.unitName);
             if (factory.unit.unitName == unitname)
             {
                 this.chosenFactory = factory;
@@ -45,11 +43,11 @@ public class UnitPlacer : MonoBehaviour {
         cost.text = "Cost: " + chosenFactory.RequiredMaterials[0].resource.resourceName + " " + chosenFactory.RequiredMaterials[0].cost;
     }
 
-    public void PlaceUnit(Tile tile, Material material)
+    public void PlaceUnit(Tile tile, Material material, Player player)
     {
         if (chosenFactory != null)
         {
-            chosenFactory.PlaceUnit(tile, material);
+            chosenFactory.PlaceUnit(tile, material, player);
         }
         else
         {

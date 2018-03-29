@@ -24,7 +24,7 @@ public class Factory : MonoBehaviour {
         public int cost;
     }
 
-    public void PlaceUnit(Tile tile, Material unitColour)
+    public void PlaceUnit(Tile tile, Material unitColour, Player player)
     {
         bool canPay = true;
         foreach(RequiredMaterial material in RequiredMaterials) {
@@ -44,6 +44,7 @@ public class Factory : MonoBehaviour {
                 }
                 Unit newUnit = Instantiate(unit, this.transform.position, this.transform.rotation);
                 newUnit.SetColor(unitColour);
+                newUnit.SetPlayer(player);
                 tile.SetUnit(newUnit);
             }
         }

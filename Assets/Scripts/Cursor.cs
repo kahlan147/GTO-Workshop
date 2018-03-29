@@ -10,6 +10,8 @@ public class Cursor : MonoBehaviour {
     private Player currentPlayer;
     private UnitPlacer unitPlacer;
     private Vector3 LastMovementVector = new Vector3(1000, 1000, 1000);
+    private Unit selectedUnit;
+    private Tile previousSelectedTile;
 
     private bool one_click = false;
     private bool timer_running;
@@ -37,6 +39,12 @@ public class Cursor : MonoBehaviour {
     private void NextPlayerTurn() {
         currentPlayer = turnManager.GetPlayer();
         unitPlacer = currentPlayer.GetComponentInChildren<UnitPlacer>();
+
+        if (selectedUnit != null)
+        {
+            this.selectedUnit.SetSelected(false);
+            this.selectedUnit = null;
+        }
     }
 
     private void Drag()
@@ -54,7 +62,6 @@ public class Cursor : MonoBehaviour {
             {
                 Vector3 movement = LastMovementVector - this.transform.position;
                 camera.transform.position += movement;
-
             }
         }
 
@@ -77,30 +84,22 @@ public class Cursor : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (!one_click) // first click no previous clicks
+            if (!one_click)
             {
                 one_click = true;
 
-                timer_for_double_click = Time.time; // save the current time
-                                                    // do one click things;
+                timer_for_double_click = Time.time;
             }
             else
             {
-                one_click = false; // found a double click, now reset
+                one_click = false;
 
                 PlaceUnit();
             }
         }
-        if (one_click)
-        {
-            // if the time now is delay seconds more than when the first click started. 
-            if ((Time.time - timer_for_double_click) > DoubleClickDelay)
-         {
-
-                //basically if thats true its been too long and we want to reset so the next click is simply a single click and not a double click.
-
+        if (one_click){
+            if ((Time.time - timer_for_double_click) > DoubleClickDelay){
                 one_click = false;
-
             }
         }
     }
@@ -112,13 +111,52 @@ public class Cursor : MonoBehaviour {
         
         if (Physics.Raycast(transform.position, -Vector3.up*3, out hit))
         {
-            tile = hit.collider.gameObject.transform.parent.GetComponent<Tile>();
+            if (!SelectUnit(hit.collider.gameObject.transform.parent.GetComponent<Unit>())){
+                tile = hit.collider.gameObject.transform.parent.GetComponent<Tile>();
+            }
         }
         if (tile != null)
         {
             Vector3 coordinates = this.transform.position;
-            unitPlacer.PlaceUnit(tile, currentPlayer.MyColor);
+            if (tile.CanPlaceUnit())
+            {
+                if (selectedUnit != null)
+                {
+                    previousSelectedTile.SetUnit(null);
+                    tile.SetUnit(selectedUnit);
+                    selectedUnit.SetSelected(false);
+                    selectedUnit = null;
+                }
+                else
+                {
+                    unitPlacer.PlaceUnit(tile, currentPlayer.MyColor, currentPlayer);
+                }
+            }
+            else
+            {
+                SelectUnit(tile.unit);
+                previousSelectedTile = tile;
+            }
         }
+    }
+
+    private bool SelectUnit(Unit selectedUnit)
+    {
+        if (selectedUnit == null)
+        {
+            return false;
+        }
+
+        if (this.selectedUnit != null)
+        {
+            this.selectedUnit.SetSelected(false);
+        }
+        if (selectedUnit.isMyOwner(currentPlayer))
+        {
+            this.selectedUnit = selectedUnit;
+            selectedUnit.SetSelected(true);
+        }
+        return true;
     }
 
     public void ChooseFactory(string unitName)
